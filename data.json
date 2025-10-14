@@ -1,7 +1,13 @@
 {
-  "message": "Chúc Mừng Sinh Nhật! 🎉",
-  "animationType": "cake",
-  "showBalloons": true,
-  "showCake": true,
-  "duration": 60
+    "birthday": {
+        "name": "Người được tặng",
+        "date": "2024-01-01",
+        "message": "Chúc mừng sinh nhật! Mong mọi điều tốt đẹp sẽ đến với bạn!",
+        "type": "birthday_card"
+    },
+    "metadata": {
+        "created": "2024-01-01",
+        "version": "1.0",
+        "author": "Your Name"
+    }
 }

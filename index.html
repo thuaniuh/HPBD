@@ -10,48 +10,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
+        /* Định nghĩa màu Vàng Kim */
+        :root {
+            --gold-color: #FFD700; /* Màu vàng kim cổ điển */
+            --light-gold: #fde_78_9; /* Vàng nhạt hơn một chút */
+            --off-white: #f5f5f5; /* Màu trắng ngà cho dễ đọc */
+        }
+
         body {
-            /* Font thanh lịch cho Thiên Bình */
             font-family: 'Playfair Display', serif; 
             
-            /* Bảng màu pastel mới */
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); 
+            /* Nền đen sang trọng */
+            background: linear-gradient(135deg, #232526 0%, #414345 100%); 
             margin: 0;
             padding: 20px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: var(--off-white); /* Chữ mặc định màu trắng ngà */
             text-align: center;
-            overflow-x: hidden; /* Ẩn confetti tràn ngang */
+            overflow-x: hidden;
         }
         
         .birthday-card {
-            background: rgba(255, 255, 255, 0.15); /* Tăng độ mờ lên một chút cho sáng */
+            /* Nền đen mờ */
+            background: rgba(0, 0, 0, 0.25); 
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             max-width: 500px;
             animation: fadeIn 1s ease-in;
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Thêm viền mờ */
+            
+            /* Viền vàng kim tinh tế */
+            border: 2px solid rgba(255, 215, 0, 0.5); 
         }
         
         h1 {
-            /* Font viết tay cho tiêu đề */
             font-family: 'Dancing Script', cursive; 
-            font-size: 3em; /* Tăng kích thước */
+            font-size: 3em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: #fff; /* Đảm bảo màu trắng nổi bật */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            
+            /* Tiêu đề màu vàng kim */
+            color: var(--gold-color); 
         }
         
         .message {
             font-size: 1.2em;
             line-height: 1.6;
             margin-bottom: 30px;
-            font-style: italic; /* Làm cho lời chúc mềm mại hơn */
+            font-style: italic;
+            color: var(--off-white); /* Chữ lời chúc */
         }
         
         .balloons {
@@ -66,10 +77,9 @@
             height: 55px;
             border-radius: 50%;
             animation: float 3s ease-in-out infinite;
-            position: relative; /* Cần cho nút buộc */
+            position: relative;
         }
 
-        /* Thêm chi tiết nút buộc bóng bay */
         .balloon::after {
             content: '';
             position: absolute;
@@ -81,14 +91,14 @@
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             border-top: 10px solid; 
-            color: inherit; /* Kế thừa màu từ bóng bay */
+            color: inherit;
         }
         
-        /* Màu pastel mới cho bóng bay (phải thêm 'color' cho ::after) */
-        .balloon:nth-child(1) { background: #ffafcc; color: #ffafcc; animation-delay: 0s; }
-        .balloon:nth-child(2) { background: #a2d2ff; color: #a2d2ff; animation-delay: 0.5s; }
-        .balloon:nth-child(3) { background: #bde0fe; color: #bde0fe; animation-delay: 1s; }
-        .balloon:nth-child(4) { background: #caffbf; color: #caffbf; animation-delay: 1.5s; }
+        /* Màu bóng bay Vàng - Bạc - Trắng */
+        .balloon:nth-child(1) { background: var(--gold-color); color: var(--gold-color); animation-delay: 0s; }
+        .balloon:nth-child(2) { background: #C0C0C0; color: #C0C0C0; animation-delay: 0.5s; } /* Màu Bạc */
+        .balloon:nth-child(3) { background: var(--light-gold); color: var(--light-gold); animation-delay: 1s; }
+        .balloon:nth-child(4) { background: #FFFFFF; color: #FFFFFF; animation-delay: 1.5s; } /* Màu Trắng */
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -104,9 +114,8 @@
             position: fixed;
             width: 10px;
             height: 10px;
-            background: #ffd700;
             animation: confettiFall 5s linear infinite;
-            top: -20px; /* Bắt đầu rơi từ trên */
+            top: -20px;
         }
         
         @keyframes confettiFall {
@@ -117,32 +126,35 @@
         .signature p {
             font-family: 'Dancing Script', cursive;
             font-size: 1.5em;
+            color: var(--gold-color); /* Chữ ký màu vàng */
         }
 
-        /* CSS cho nút phát nhạc */
+        /* CSS cho nút phát nhạc phong cách Black & Gold */
         #playButton {
-            background: #ffafcc; /* Dùng màu hồng chủ đạo */
-            color: #fff;
-            border: none;
+            background: transparent; /* Nền trong suốt */
+            color: var(--gold-color); /* Chữ vàng */
+            border: 2px solid var(--gold-color); /* Viền vàng */
             border-radius: 10px;
             padding: 10px 20px;
             font-size: 1em;
-            font-family: 'Arial', sans-serif; /* Dùng font rõ ràng cho nút */
+            font-family: 'Arial', sans-serif; 
             cursor: pointer;
             margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); /* Hiệu ứng tỏa sáng nhẹ */
+            transition: all 0.3s ease;
             font-weight: bold;
         }
         #playButton:hover {
+            background: var(--gold-color); /* Khi hover, nền đổi vàng */
+            color: #000; /* Chữ đổi đen */
             transform: scale(1.05);
-            background: #ff8fab;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
     </style>
 </head>
 <body>
     <div class="birthday-card">
-        <h1>🎉 Chúc Mừng Sinh Nhật Thiên Bình! ♎</h1>
+        <h1>🎉 Chúc Mừng Sinh Nhật! ♎</h1>
         
         <div class="balloons">
             <div class="balloon"></div>
@@ -152,14 +164,15 @@
         </div>
         
         <div class="message">
-            <p>Chúc cô nàng Thiên Bình của tớ một ngày sinh nhật thật tuyệt vời!</p>
-            <p>🎈 Nhiều niềm vui, sức khỏe, và luôn xinh đẹp, cân bằng như chính cậu vậy! 🎈</p>
-            <p>Hãy tận hưởng ngày đặc biệt này nhé! 💝</p>
+            <p>Chúc bạn một ngày sinh nhật thật rực rỡ và sang trọng!</p>
+            <p>🎈 Luôn tỏa sáng, cân bằng và hạnh phúc như chính phong thái của cậu. 🎈</p>
+            <p>Tận hưởng ngày đặc biệt này nhé! 💝</p>
         </div>
         
         <div class="music-player">
-            <button id="playButton">Click vào đây 🎁</button>
+            <button id="playButton">Mở Quà 🎁</button>
         </div>
+        
         <audio id="birthdaySong" src="link_den_file_nhac.mp3" loop></audio>
 
         <div class="signature">
@@ -168,10 +181,10 @@
     </div>
 
     <script>
-        // Tạo confetti
+        // Tạo confetti Vàng & Bạc
         function createConfetti() {
-            // Mảng màu pastel mới
-            const colors = ['#ffafcc', '#a2d2ff', '#bde0fe', '#caffbf', '#ffc6ff', '#fdffb6'];
+            // Mảng màu Vàng - Bạc - Trắng
+            const colors = ['#FFD700', '#C0C0C0', '#FFFFFF', '#fde_78_9'];
             
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
@@ -181,12 +194,21 @@
                 confetti.style.animationDelay = Math.random() * 5 + 's';
                 confetti.style.width = Math.random() * 10 + 5 + 'px';
                 confetti.style.height = Math.random() * 10 + 5 + 'px';
-                confetti.style.opacity = Math.random() * 0.5 + 0.5; // Thêm độ mờ ngẫu nhiên
+                confetti.style.opacity = Math.random() * 0.5 + 0.5;
+                
+                // Thêm hình dạng confetti (vuông và chữ nhật)
+                if (Math.random() > 0.5) {
+                    confetti.style.width = '5px';
+                    confetti.style.height = '15px';
+                } else {
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                }
+
                 document.body.appendChild(confetti);
             }
         }
         
-        // Xử lý nút phát nhạc (thay thế hàm cũ)
         function setupMusicPlayer() {
             const playButton = document.getElementById('playButton');
             const song = document.getElementById('birthdaySong');
@@ -206,10 +228,9 @@
             }
         }
         
-        // Khởi tạo
         window.onload = function() {
             createConfetti();
-            setupMusicPlayer(); // Gọi hàm xử lý nhạc mới
+            setupMusicPlayer(); 
         };
     </script>
 </body>

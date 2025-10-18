@@ -12,15 +12,13 @@
     <style>
         /* Định nghĩa màu Vàng Kim */
         :root {
-            --gold-color: #FFD700; /* Màu vàng kim cổ điển */
-            --light-gold: #fde_78_9; /* Vàng nhạt hơn một chút */
-            --off-white: #f5f5f5; /* Màu trắng ngà cho dễ đọc */
+            --gold-color: #FFD700;
+            --light-gold: #fde_78_9;
+            --off-white: #f5f5f5;
         }
 
         body {
             font-family: 'Playfair Display', serif; 
-            
-            /* Nền đen sang trọng */
             background: linear-gradient(135deg, #232526 0%, #414345 100%); 
             margin: 0;
             padding: 20px;
@@ -28,13 +26,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--off-white); /* Chữ mặc định màu trắng ngà */
+            color: var(--off-white);
             text-align: center;
             overflow-x: hidden;
         }
         
         .birthday-card {
-            /* Nền đen mờ */
             background: rgba(0, 0, 0, 0.25); 
             backdrop-filter: blur(10px);
             border-radius: 20px;
@@ -42,8 +39,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             max-width: 500px;
             animation: fadeIn 1s ease-in;
-            
-            /* Viền vàng kim tinh tế */
             border: 2px solid rgba(255, 215, 0, 0.5); 
         }
         
@@ -52,8 +47,6 @@
             font-size: 3em;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            
-            /* Tiêu đề màu vàng kim */
             color: var(--gold-color); 
         }
         
@@ -62,53 +55,28 @@
             line-height: 1.6;
             margin-bottom: 30px;
             font-style: italic;
-            color: var(--off-white); /* Chữ lời chúc */
-        }
-        
-        .balloons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .balloon {
-            width: 45px;
-            height: 55px;
-            border-radius: 50%;
-            animation: float 3s ease-in-out infinite;
-            position: relative;
+            color: var(--off-white);
         }
 
-        .balloon::after {
-            content: '';
-            position: absolute;
-            bottom: -8px; 
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 10px solid; 
-            color: inherit;
+        /* === PHẦN CSS CHO BÓNG BAY ĐÃ BỊ XÓA === */
+
+        /* CSS MỚI: Dành cho ảnh bạn chèn vào */
+        .birthday-image {
+            width: 80%; /* Chiếm 80% chiều rộng thiệp */
+            max-width: 300px; /* Giới hạn kích thước tối đa */
+            border-radius: 15px; /* Bo góc */
+            border: 2px solid var(--gold-color); /* Viền vàng đồng bộ */
+            margin: 20px 0; /* Tạo khoảng cách */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        
-        /* Màu bóng bay Vàng - Bạc - Trắng */
-        .balloon:nth-child(1) { background: var(--gold-color); color: var(--gold-color); animation-delay: 0s; }
-        .balloon:nth-child(2) { background: #C0C0C0; color: #C0C0C0; animation-delay: 0.5s; } /* Màu Bạc */
-        .balloon:nth-child(3) { background: var(--light-gold); color: var(--light-gold); animation-delay: 1s; }
-        .balloon:nth-child(4) { background: #FFFFFF; color: #FFFFFF; animation-delay: 1.5s; } /* Màu Trắng */
+
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+        /* === KEYFRAME 'float' CỦA BÓNG BAY ĐÃ BỊ XÓA === */
         
         .confetti {
             position: fixed;
@@ -126,27 +94,26 @@
         .signature p {
             font-family: 'Dancing Script', cursive;
             font-size: 1.5em;
-            color: var(--gold-color); /* Chữ ký màu vàng */
+            color: var(--gold-color);
         }
 
-        /* CSS cho nút phát nhạc phong cách Black & Gold */
         #playButton {
-            background: transparent; /* Nền trong suốt */
-            color: var(--gold-color); /* Chữ vàng */
-            border: 2px solid var(--gold-color); /* Viền vàng */
+            background: transparent;
+            color: var(--gold-color);
+            border: 2px solid var(--gold-color);
             border-radius: 10px;
             padding: 10px 20px;
             font-size: 1em;
             font-family: 'Arial', sans-serif; 
             cursor: pointer;
             margin-top: 10px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); /* Hiệu ứng tỏa sáng nhẹ */
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
             transition: all 0.3s ease;
             font-weight: bold;
         }
         #playButton:hover {
-            background: var(--gold-color); /* Khi hover, nền đổi vàng */
-            color: #000; /* Chữ đổi đen */
+            background: var(--gold-color);
+            color: #000;
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
@@ -156,16 +123,16 @@
     <div class="birthday-card">
         <h1>🎉 Chúc Mừng Sinh Nhật! ♎</h1>
         
-        <div class="balloons">
-            <div class="balloon"></div>
-            <div class="balloon"></div>
-            <div class="balloon"></div>
-            <div class="balloon"></div>
-        </div>
+        <img src="link_den_hinh_anh.jpg" alt="Kỷ niệm" class="birthday-image">
         
         <div class="message">
             <p>Chúc bạn một ngày sinh nhật thật rực rỡ và sang trọng!</p>
             <p>🎈 Luôn tỏa sáng, cân bằng và hạnh phúc như chính phong thái của cậu. 🎈</p>
+            
+            <p style="font-weight: bold; color: var(--gold-color);">
+                [BẠN CÓ THỂ GHI THÊM LỜI CHÚC DÀI HƠN Ở ĐÂY]
+            </p>
+            
             <p>Tận hưởng ngày đặc biệt này nhé! 💝</p>
         </div>
         
@@ -183,7 +150,6 @@
     <script>
         // Tạo confetti Vàng & Bạc
         function createConfetti() {
-            // Mảng màu Vàng - Bạc - Trắng
             const colors = ['#FFD700', '#C0C0C0', '#FFFFFF', '#fde_78_9'];
             
             for (let i = 0; i < 50; i++) {
@@ -192,11 +158,7 @@
                 confetti.style.left = Math.random() * 100 + 'vw';
                 confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.animationDelay = Math.random() * 5 + 's';
-                confetti.style.width = Math.random() * 10 + 5 + 'px';
-                confetti.style.height = Math.random() * 10 + 5 + 'px';
-                confetti.style.opacity = Math.random() * 0.5 + 0.5;
                 
-                // Thêm hình dạng confetti (vuông và chữ nhật)
                 if (Math.random() > 0.5) {
                     confetti.style.width = '5px';
                     confetti.style.height = '15px';
@@ -204,6 +166,7 @@
                     confetti.style.width = '10px';
                     confetti.style.height = '10px';
                 }
+                confetti.style.opacity = Math.random() * 0.5 + 0.5;
 
                 document.body.appendChild(confetti);
             }

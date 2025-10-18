@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc Mừng Sinh Nhật!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Font thanh lịch cho Thiên Bình */
+            font-family: 'Playfair Display', serif; 
+            
+            /* Bảng màu pastel mới */
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); 
             margin: 0;
             padding: 20px;
             min-height: 100vh;
@@ -16,28 +24,34 @@
             align-items: center;
             color: white;
             text-align: center;
+            overflow-x: hidden; /* Ẩn confetti tràn ngang */
         }
         
         .birthday-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15); /* Tăng độ mờ lên một chút cho sáng */
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             max-width: 500px;
             animation: fadeIn 1s ease-in;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Thêm viền mờ */
         }
         
         h1 {
-            font-size: 2.5em;
+            /* Font viết tay cho tiêu đề */
+            font-family: 'Dancing Script', cursive; 
+            font-size: 3em; /* Tăng kích thước */
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #fff; /* Đảm bảo màu trắng nổi bật */
         }
         
         .message {
             font-size: 1.2em;
             line-height: 1.6;
             margin-bottom: 30px;
+            font-style: italic; /* Làm cho lời chúc mềm mại hơn */
         }
         
         .balloons {
@@ -48,16 +62,33 @@
         }
         
         .balloon {
-            width: 40px;
-            height: 50px;
+            width: 45px;
+            height: 55px;
             border-radius: 50%;
             animation: float 3s ease-in-out infinite;
+            position: relative; /* Cần cho nút buộc */
+        }
+
+        /* Thêm chi tiết nút buộc bóng bay */
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid; 
+            color: inherit; /* Kế thừa màu từ bóng bay */
         }
         
-        .balloon:nth-child(1) { background: #ff6b6b; animation-delay: 0s; }
-        .balloon:nth-child(2) { background: #4ecdc4; animation-delay: 0.5s; }
-        .balloon:nth-child(3) { background: #ffd166; animation-delay: 1s; }
-        .balloon:nth-child(4) { background: #06d6a0; animation-delay: 1.5s; }
+        /* Màu pastel mới cho bóng bay (phải thêm 'color' cho ::after) */
+        .balloon:nth-child(1) { background: #ffafcc; color: #ffafcc; animation-delay: 0s; }
+        .balloon:nth-child(2) { background: #a2d2ff; color: #a2d2ff; animation-delay: 0.5s; }
+        .balloon:nth-child(3) { background: #bde0fe; color: #bde0fe; animation-delay: 1s; }
+        .balloon:nth-child(4) { background: #caffbf; color: #caffbf; animation-delay: 1.5s; }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -75,17 +106,43 @@
             height: 10px;
             background: #ffd700;
             animation: confettiFall 5s linear infinite;
+            top: -20px; /* Bắt đầu rơi từ trên */
         }
         
         @keyframes confettiFall {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .signature p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+        }
+
+        /* CSS cho nút phát nhạc */
+        #playButton {
+            background: #ffafcc; /* Dùng màu hồng chủ đạo */
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-family: 'Arial', sans-serif; /* Dùng font rõ ràng cho nút */
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.2s;
+            font-weight: bold;
+        }
+        #playButton:hover {
+            transform: scale(1.05);
+            background: #ff8fab;
         }
     </style>
 </head>
 <body>
     <div class="birthday-card">
-        <h1>🎉 Chúc Mừng Sinh Nhật! 🎂</h1>
+        <h1>🎉 Chúc Mừng Sinh Nhật Thiên Bình! ♎</h1>
         
         <div class="balloons">
             <div class="balloon"></div>
@@ -95,11 +152,16 @@
         </div>
         
         <div class="message">
-            <p>Chúc bạn có một ngày sinh nhật thật tuyệt vời!</p>
-            <p>🎈 Nhiều niềm vui, sức khỏe và thành công! 🎈</p>
+            <p>Chúc cô nàng Thiên Bình của tớ một ngày sinh nhật thật tuyệt vời!</p>
+            <p>🎈 Nhiều niềm vui, sức khỏe, và luôn xinh đẹp, cân bằng như chính cậu vậy! 🎈</p>
             <p>Hãy tận hưởng ngày đặc biệt này nhé! 💝</p>
         </div>
         
+        <div class="music-player">
+            <button id="playButton">Click vào đây 🎁</button>
+        </div>
+        <audio id="birthdaySong" src="link_den_file_nhac.mp3" loop></audio>
+
         <div class="signature">
             <p><strong>Gửi từ trái tim ❤️</strong></p>
         </div>
@@ -108,7 +170,9 @@
     <script>
         // Tạo confetti
         function createConfetti() {
-            const colors = ['#ff6b6b', '#4ecdc4', '#ffd166', '#06d6a0', '#ff9ff3', '#f368e0'];
+            // Mảng màu pastel mới
+            const colors = ['#ffafcc', '#a2d2ff', '#bde0fe', '#caffbf', '#ffc6ff', '#fdffb6'];
+            
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
@@ -117,20 +181,35 @@
                 confetti.style.animationDelay = Math.random() * 5 + 's';
                 confetti.style.width = Math.random() * 10 + 5 + 'px';
                 confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.opacity = Math.random() * 0.5 + 0.5; // Thêm độ mờ ngẫu nhiên
                 document.body.appendChild(confetti);
             }
         }
         
-        // Phát nhạc chúc mừng (tùy chọn)
-        function playBirthdaySong() {
-            // Có thể thêm audio ở đây
-            console.log("Happy Birthday! 🎵");
+        // Xử lý nút phát nhạc (thay thế hàm cũ)
+        function setupMusicPlayer() {
+            const playButton = document.getElementById('playButton');
+            const song = document.getElementById('birthdaySong');
+            
+            if (playButton && song) {
+                playButton.addEventListener('click', function() {
+                    if (song.paused) {
+                        song.play();
+                        playButton.textContent = "Đang phát... 🎵";
+                    } else {
+                        song.pause();
+                        playButton.textContent = "Tạm dừng ⏸️";
+                    }
+                });
+            } else {
+                console.log("Không tìm thấy nút hoặc file nhạc.");
+            }
         }
         
         // Khởi tạo
         window.onload = function() {
             createConfetti();
-            playBirthdaySong();
+            setupMusicPlayer(); // Gọi hàm xử lý nhạc mới
         };
     </script>
 </body>
